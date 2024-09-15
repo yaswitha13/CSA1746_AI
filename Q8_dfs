@@ -1,23 +1,17 @@
-print("DFS")
 graph = {
-    'A': ['B', 'C'],
-    'B': ['D', 'E'],
-    'C': ['F'],
-    'D': [],
-    'E': ['F'],
-    'F': []
+  '5' : ['3','7'],
+  '3' : ['2', '4'],
+  '7' : ['8'],
+  '2' : [],
+  '4' : ['8'],
+  '8' : []
 }
-
-def dfs(graph, start, visited):
-    if start not in visited:
-        print(start, end=' ')
-        visited.add(start)
-        for neighbor in graph[start]:
-            dfs(graph, neighbor, visited)
-
-def dfs_main(graph, start_node):
-    visited = set()
-    dfs(graph, start_node, visited)
-
-
-dfs_main(graph, 'A')
+visited = set() 
+def dfs(visited, graph, node):
+    if node not in visited:
+        print (node)
+        visited.add(node)
+        for neighbour in graph[node]:
+            dfs(visited, graph, neighbour)
+print("Following is the Depth-First Search")
+dfs(visited, graph, '5')
