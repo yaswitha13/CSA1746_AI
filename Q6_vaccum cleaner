@@ -1,35 +1,39 @@
-print("yosha")
-class VacuumCleaner:
-    def __init__(self):
-        self.position = 0  # Position of the vacuum cleaner (0: Left, 1: Right)
-        self.environment = [0, 0]  # Environment with dirty cells (0: Clean, 1: Dirty)
+import random
+def display(room):
+    print(room)
+room = [
+    [1, 1, 1, 1],
+    [1, 1, 1, 1],
+    [1, 1, 1, 1],
+    [1, 1, 1, 1],
+]
+print("All the rooom are dirty")
+display(room)
 
-    def sense(self):
-        return self.environment[self.position]
-
-    def move(self):
-        if self.position == 0:
-            self.position = 1
-        else:
-            self.position = 0
-
-    def clean(self):
-        self.environment[self.position] = 0
-
-    def run(self, steps):
-        for _ in range(steps):
-            current_state = self.sense()
-            if current_state == 1:  # Dirty cell
-                self.clean()
-                print(f"Cleaned cell {self.position}")
-            else:
-                print(f"Cell {self.position} is already clean.")
-            self.move()
-
-
-if __name__ == "__main__":
-    vacuum_cleaner = VacuumCleaner()
-    steps = 5
-    print("Initial environment:", vacuum_cleaner.environment)
-    vacuum_cleaner.run(steps)
-    print("Final environment:", vacuum_cleaner.environment)
+x =0
+y= 0
+while x < 4:
+    while y < 4:
+        room[x][y] = random.choice([0,1])
+        y+=1
+    x+=1
+    y=0
+print("Before cleaning the room I detect all of these random dirts")
+display(room)
+x =0
+y= 0
+z=0
+while x < 4:
+    while y < 4:
+        if room[x][y] == 1:
+            print("Vaccum in this location now,",x, y)
+            room[x][y] = 0
+            print("cleaned", x, y)
+            z+=1
+        y+=1
+    x+=1
+    y=0
+pro= (100-((z/16)*100))
+print("Room is clean now, Thanks for using : 3710933")
+display(room)
+print('performance=',pro,'%')
